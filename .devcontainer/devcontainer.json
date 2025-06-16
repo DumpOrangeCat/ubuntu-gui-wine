@@ -1,0 +1,15 @@
+{
+  "name": "Ubuntu GUI with Wine",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  },
+  "features": {},
+  "postCreateCommand": "bash /setup.sh",
+  "forwardPorts": [6080],
+  "remoteUser": "root"
+}
