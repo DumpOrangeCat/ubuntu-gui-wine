@@ -1,4 +1,12 @@
+# File .devcontainer/devcontainer.json
 {
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "docker-in-docker": "latest"
+  },
+  "forwardPorts": [6901],
+  "postCreateCommand": "sudo apt update && sudo apt install -y docker.io && docker run -d --shm-size=512m -p 6901:6901 -e VNC_PW=123456 kasmweb/ubuntu-jammy-desktop"
+}{
   "name": "Wine GUI Environment",
   "build": {
     "dockerfile": "Dockerfile"
