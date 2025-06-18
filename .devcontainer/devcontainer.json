@@ -1,15 +1,22 @@
 {
-  "name": "Ubuntu GUI with Wine",
+  "name": "Wine GUI Environment",
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "forwardPorts": [6080, 5901],
+  "runArgs": [
+    "--cap-add=SYS_PTRACE",
+    "--security-opt", "seccomp=unconfined",
+    "--shm-size=1gb"
+  ],
   "customizations": {
     "vscode": {
-      "extensions": []
+      "extensions": [
+        "ms-vscode.remote-containers",
+        "ms-vscode.cpptools"
+      ]
     }
   },
-  "features": {},
-  "postCreateCommand": "bash /setup.sh",
-  "forwardPorts": [6080],
-  "remoteUser": "root"
+  "remoteUser": "vscode",
+  "postCreateCommand": "winetricks corefonts && echo '✔ Ready!'"
 }
